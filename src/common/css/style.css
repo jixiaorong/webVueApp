@@ -12,3 +12,57 @@
     font-size: 0.18rem;
   
   }
+  #app{
+    position: relative;
+  }
+  .app-content{
+    position: absolute;
+    top:44px;
+    bottom:48px;
+    left:0px;
+    overflow: auto;
+    width:100%;
+  }
+  .mu-bottom-item-active .mu-bottom-item-icon,.mu-bottom-item-active .mu-bottom-item-text{
+    color:#3f51b5;
+  }
+  .mu-tab-link-highlight{
+    display: inline-block;
+    background-color: #fff;
+    background-image: -webkit-linear-gradient( left,
+       #fff  0%,
+        #fff  40%,
+        #ff8a65  40%,
+        #ff8a65 60%,
+        #fff  60%,
+        #fff 100%
+    );
+     background-image: linear-gradient( left,
+       #fff  0%,
+        #fff  40%,
+        #ff8a65  40%,
+        #ff8a65 60%,
+        #fff  60%,
+        #fff 100%
+    );
+     background-image: -o-linear-gradient( left,
+       #fff  0%,
+        #fff  40%,
+        #ff8a65  40%,
+        #ff8a65 60%,
+        #fff  60%,
+        #fff 100%
+    );
+     background-image: -moz-linear-gradient( left,
+       #fff  0%,
+        #fff  40%,
+        #ff8a65  40%,
+        #ff8a65 60%,
+        #fff  60%,
+        #fff 100%
+    );
+}
+.mu-appbar-title{
+  line-height: 44px;
+  text-align: center;
+}

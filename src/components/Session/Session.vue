@@ -166,7 +166,7 @@ export default{
     },
 }
 </script>
-<style>
+<style scoped>
 
 #app{
     width:100%;
@@ -174,12 +174,7 @@ export default{
     background-color: #f5f5f5;
     position: relative;
 }
-.mu-appbar-title{
-  text-align: center;
-}
-.mu-appbar {
-  background-color: #5170b6;
-}
+
 .mu-appbar .left,.mu-appbar .right{
     width:0;
 }
@@ -187,7 +182,7 @@ export default{
     padding:0px;
 }
 .goBack{
-    font-size:0.24rem;
+    font-size:0.18rem;
     color:#fff;
 }
 /* 聊天室主要内容 */

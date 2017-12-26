@@ -21,7 +21,7 @@
        </div>
     </div>
 </template>
-<script>
+<script scoped>
 
   document.addEventListener('plusready',function(){
         plus.navigator.setStatusBarBackground("#fff");

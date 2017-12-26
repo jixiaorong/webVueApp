@@ -1,16 +1,17 @@
 <template>
     <div>
-        <mu-appbar title="活动">
-        </mu-appbar>
-
-        <mu-icon-menu icon="more_vert" slot="right"   :anchorOrigin="rightTop" :targetOrigin="rightBottom" style="position:fixed;top:0px;right:0px;z-index:9;color:#fff;">
-            <mu-menu-item  title="全部活动"/>
-            <mu-menu-item title="快闪店"/>
-            <mu-menu-item title="主题展"/>
-            <mu-menu-item title="其他"/>
+        <div class="app-title">
+            <mu-appbar title="活动"></mu-appbar>
+            <mu-icon-menu icon="more_vert" slot="right"   :anchorOrigin="rightTop" :targetOrigin="rightBottom" style="position:fixed;top:0px;right:0px;z-index:9;color:#fff;">
+                <mu-menu-item  title="全部活动"/>
+                <mu-menu-item title="快闪店"/>
+                <mu-menu-item title="主题展"/>
+                <mu-menu-item title="其他"/>
             </mu-icon-menu>
+        </div>
         
-        <!-- 中间的tab栏 -->
+        <div class="app-content">
+            <!-- 中间的tab栏 -->
         <mu-tabs class="myMuTabs" :value="activeTab" @change="handleTabChange">
             <mu-tab value="tab1" title="时间" ref="a" />
             <mu-tab value="tab2" title="热度"  />
@@ -196,11 +197,11 @@
                    </div>
                 </li>
             </ul>
-            <p class="spacing"></p>
         </div>
         <div v-if="activeTab === 'tab2'" class="timeTab">
                 
         </div>  
+        </div>
     </div>
 </template>
 <script>
@@ -224,8 +225,15 @@ export default {
   }
 };
 </script>
-<style>
-
+<style scoped>
+#app{
+    position: relative;
+}
+.app-title{
+    position: absolute;
+    z-index: 55;
+    top:0px;
+}
 .timeTab{
     background-color: #fff;
 }
@@ -235,12 +243,12 @@ export default {
   font-size: 0.18rem;
 
 }
+.bottom-border[data-v-65217b80]{
+    height:0px;
+}
 .mu-appbar {
   background-color: #3f51b5;
   height:44px;
-  position: fixed;
-  z-index: 6;
-  top:0px;
   line-height: 44px;
 }
 .lightLine{
@@ -250,7 +258,6 @@ export default {
 .myMuTabs{
     background-color: #fff;
     text-align: center;
-    margin-top:44px; 
 }
 .mu-tab-link{
     color:#333;
@@ -260,42 +267,6 @@ export default {
 
 .mu-tab-active{
     color:#ff8a65
-}
-span.mu-tab-link-highlight{
-    display: inline-block;
-    background-color: #fff;
-    background-image: -webkit-linear-gradient( left,
-       #fff  0%,
-        #fff  40%,
-        #ff8a65  40%,
-        #ff8a65 60%,
-        #fff  60%,
-        #fff 100%
-    );
-     background-image: linear-gradient( left,
-       #fff  0%,
-        #fff  40%,
-        #ff8a65  40%,
-        #ff8a65 60%,
-        #fff  60%,
-        #fff 100%
-    );
-     background-image: -o-linear-gradient( left,
-       #fff  0%,
-        #fff  40%,
-        #ff8a65  40%,
-        #ff8a65 60%,
-        #fff  60%,
-        #fff 100%
-    );
-     background-image: -moz-linear-gradient( left,
-       #fff  0%,
-        #fff  40%,
-        #ff8a65  40%,
-        #ff8a65 60%,
-        #fff  60%,
-        #fff 100%
-    );
 }
 .mu-appbar .left{
     width:48px;
@@ -427,9 +398,6 @@ span.mu-tab-link-highlight{
 }
 .singleABottom li:nth-child(2) span{
     font-size: 26px;
-}
-.spacing{
-    height: 45px;
 }
 
 /* tab2 */

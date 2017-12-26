@@ -13,7 +13,7 @@
     <router-view keep-alive></router-view>  
     </div>  
 </template>
-<script>
+<script scope>
 
 
 document.addEventListener('plusready',function(){
@@ -34,17 +34,17 @@ export default{
 }
 
 </script>
-<style>
+<style scoped>
 #app{
     background-color: #fff;
 }
   .vue-footer{
       width:100%;
       height: 48px;
-      position: fixed;
-      bottom: 0;
+      position: absolute;
+      bottom: 0px;
       left: 0;
-    z-index:9999;
+      z-index:55;
     }
     .vue-footer ul li{
       float: left;
@@ -57,9 +57,5 @@ export default{
       font-size: 16px;
       display: block;
       line-height: 56px;
-    }
-    .mu-bottom-item-active .mu-bottom-item-icon,.mu-bottom-item-active .mu-bottom-item-text{
-        color:#3f51b5;
-
     }
 </style>
