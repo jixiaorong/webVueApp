@@ -122,7 +122,7 @@ export default{
     },
     methods: {
         goBack:function(){
-            this.$router.push('/user/talking')
+            this.$router.back(-1)
         },
         // 显示隐藏对话框
         toggleOneKey:function(){

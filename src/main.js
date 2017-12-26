@@ -27,9 +27,20 @@ import Session from './components/Session/Session'
 
 // 定义路由
 const routes = [
-  {path: '/login', component: Login},
+  // 登录的路由
   {path: '/', redirect: '/login'},
-  { path: '/user', component: User},
+  {path: '/login', component: Login},
+
+  // 用户界面
+  { path: '/user', component: User,children:[
+    {path: '', redirect: '/user/activity' },
+    {path: 'activity', component: Activity },
+    {path: 'talking', component: Talking },
+    {path: 'siting', component: Siting },
+    {path: 'me', component: Me },
+  ]},
+
+  // 会话的路由
   { path: '/session/', component: Session },
 ]
 

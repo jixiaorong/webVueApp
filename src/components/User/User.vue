@@ -15,38 +15,12 @@
 </template>
 <script>
 
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Activity from './Activity'
-import Talking from './Talking'
-import Siting from './Siting'
-import Me from './Me'
-import Session from '../Session/Session'
-Vue.use(VueRouter)
-
-
-const routes = [
-  
-  { path: '/user/talking', component: Talking },
-  { path: '/user/activity', component: Activity },
-   {path: '/user', redirect: '/user/activity'},
-  { path: '/user/siting', component: Siting },
-  { path: '/user/me', component: Me },
-  { path: '/session', component: Session },
-]
-
-// 3. 创建 router 实例，然后传 `routes` 配置
-// 你还可以传别的配置参数, 不过先这么简单着吧。
-const router = new VueRouter({
-  routes 
-})
-
 
 document.addEventListener('plusready',function(){
         plus.navigator.setStatusBarBackground("#3f51b5");
   },false);
 export default{
-    router,
+
     data:function(){
         return {
       bottomNav: 'activity'
