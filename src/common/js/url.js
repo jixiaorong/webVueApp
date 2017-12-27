@@ -1,5 +1,8 @@
+
 "use strict"
 
-const baseUrl={
-    tryUrl:""// 测试url
+export default {
+    
+    tryUrl:"http://local.huodongbao.orange100.com/account/account_login"// 测试url
+    
 }

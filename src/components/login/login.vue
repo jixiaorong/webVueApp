@@ -4,21 +4,29 @@
        <div class="loginInfo">
            <div class="rowLogin">
                <div class="rowInput">
-                   <input type="number" placeholder="手机号">
+                   <input type="number" placeholder="手机号" v-model="phone">
                     <span class="icon-shouji" color="#333"></span>
                </div>
            </div>
-           <div class="rowLogin">
+           <!-- <div class="rowLogin">
                <div class="rowInput">
-                   <input type="number" placeholder="验证码">
+                   <input type="type" placeholder="验证码" v-model="code">
                     <span class="icon-message"  color="#666"></span>
                     <button>获取验证码</button>
                </div>
-           </div>
+           </div> -->
+            <div class="rowLogin">
+               <div class="rowInput">
+                   <input type="password" placeholder="输入密码" v-model="password">
+                    <span class="icon-message"  color="#666"></span>
+               </div>
+            </div>
            <div class="rowLogin">
                 <button @click="jump">登陆</button>
             </div>
        </div>
+       <!-- toast 提示 -->
+       <mu-toast v-if="toast" :message="tipMessage" @close="hideToast"/>
     </div>
 </template>
 <script scoped>
@@ -27,11 +35,71 @@
         plus.navigator.setStatusBarBackground("#fff");
   },false);
 
+import baseUrl from '../../common/js/url.js'// url地址
+import commonJs from '../../common/js/common.js' // 工具箱
+import axios from 'axios' // 导入axios
+const tryUrl=baseUrl.tryUrl //手机号密码登录的地址
+
  export default{
+     data:function(){
+         return{
+             phone:'',//手机号
+             code:'',//验证码
+             password:'',//密码
+             toast:false,// 弹出框初始化
+             tipMessage:'',//弹出的提示信息
+         }
+     },
       methods: {
-       jump:function(){
-           this.$router.push('user/')
-       }
+        showToast () { //显示弹出框
+             this.toast = true
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+             this.toastTimer = setTimeout(() => { this.toast = false }, 10000)
+        },
+        hideToast () {// 隐藏弹出框
+            this.toast = false
+            if (this.toastTimer) clearTimeout(this.toastTimer)
+        },
+       jump:function(){// 请求成功登陆
+            const phone=this.phone;
+            const password=this.password
+            if(!(/^1[345789]\d{9}$/.test(this.phone))){// 手机号码验证
+                this.showToast();
+                this.tipMessage="号码有误请重新输入。。"
+                return false;
+            }
+            // if(this.code==""){
+            //      this.showToast();
+            //     this.tipMessage="验证码有误"
+            //     return false;
+            // }
+                if(this.password==""){
+                 this.showToast();
+                this.tipMessage="请输入密码"
+                return false;
+            }
+            axios.post(tryUrl,{
+                mobile:phone,
+                password:password
+                })
+                .then(res=>{
+                    
+                    console.log(res)
+                    if(res.status==200&&res.data.err_msg=="success"){
+                        setLocal(token,res.dara.access_token)
+                            // this.$router.push('user/')
+                    }
+        
+                })
+                .catch(err=>{
+                     this.showToast();
+                    this.tipMessage=err.response.data.err_msg  
+                });
+
+       
+
+       },
+    
      }
  }
 </script>
@@ -40,7 +108,7 @@
 #app{
     background-color: #fff;
 }
-    button{
+button{
         width:100%;
         color:#fff;
         background-color:#ff8a65;
@@ -48,10 +116,11 @@
         border-radius: 5px;
         font-size: 0.16rem;
     }
-    .demo-divider-form {
+.demo-divider-form {
     margin-bottom: 0;
     margin-left: 20px;
   }
+
   /* 登录信息 */
   .loginInfo{
       width:100%;

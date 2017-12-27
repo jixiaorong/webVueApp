@@ -20,40 +20,41 @@
         <!-- tab栏的主体 -->
         <div v-if="activeTab === 'tab1'" class="timeTab">
             <ul>
-                <li>
-                    <!-- 单个活动的上部 -->
-                   <div class="singleATop clearfix">
+                <!-- 列表的数据遍历 -->
+                <li v-for="(item,index) in activityInfo">
+                     <!-- 单个活动的上部 -->
+                    <div class="singleATop clearfix">
                        <div class="singleATop-left">
-                          <img src="../../../static/images/girl.jpg" alt="">
-
+                          <img :src="item.src" alt="">
                        </div>
-                       <div class="singleATop-right ">
+                        <div class="singleATop-right ">
                            <p class="activity-title">
-                               <span class="activity-name">河马先生</span>
-                                <span><i v-show="isLinkMe">[@了我]</i></span>
-                                <span class="publish-time">6/25</span>
+                               <span class="activity-name">{{item.name}}</span>
+                                <span><span v-show=item.isCallMe> [@了我] </span></span>
+                                <span class="publish-time">{{item.infoTime}}</span>
                             </p>
                             <ul>
                                 <li>
                                     <span class="w4">期望时间</span>
                                     <span>：</span>
-                                    <p><span style="letter-spacing:0;">2017/10/3-2017/10/7</span><span>(共4天)</span></p>
+                                    <p><span style="letter-spacing:0;">{{item.expectTime}}</span><span>({{item.allTime}})</span></p>
                                 </li>
                                 <li><span class="w4">场地预算</span>
                                     <span>：</span>
-                                    <p>3~5万</p>
+                                    <p>{{item.budget}}</p>
                                 </li>
                                     
                                 <li class="space-require"><span class="w4">场地需求</span>
                                     <span>：</span>
-                                    <p>最好的额我思考对方开始减肥方法你福利俄文饭</p>
+                                    <p>{{item.siteNeed}}</p>
                                 </li>
                                     
                                 <li class="find-position"><span class="w4">询价位置</span>
                                     <span>：</span>
                                     <p>
-                                        <span>室内一层</span>
-                                        <span>室外南广场</span>
+                                        <span v-for="single in item.activityPosition">
+                                            {{single}}
+                                        </span>
                                     </p>
                                 </li>
                                 <li><span class="w4">活动方案</span>
@@ -64,131 +65,14 @@
                                 </li>
                             </ul>
                        </div>
-                       <span class="hold-number">已有56人抢单</span>
-                   </div>
-                   <!-- 单个活动的下部分 --> 
+                       <span class="hold-number">已有{{item.currentPerson}}人抢单</span>
+                    </div>
+                    <!-- 单个活动的下部分 --> 
                    <div class="singleABottom">
                        <ul>
                            <li><p>立即抢单</p></li>
-                           <li @click="Collect">
-                                <span :class="{'icon-shoucang':true,shoucang:isShou}"></span>
-                           </li>
-                           <li>
-                               <span class="icon-fenxiang2"></span>
-                           </li>
-                       </ul>
-                   </div>
-                </li>
-                 <li>
-                    <!-- 单个活动的上部 -->
-                   <div class="singleATop clearfix">
-                       <div class="singleATop-left">
-                          <img src="../../../static/images/girl.jpg" alt="" >
-                          <!-- <p>快闪店</p> -->
-                       </div>
-                       <div class="singleATop-right ">
-                           <p class="activity-title">
-                               <span class="activity-name">河马先生</span>
-                                <span><i v-show="isLinkMe">[@了我]</i></span>
-                                <span class="publish-time">6/25</span>
-                            </p>
-                            <ul>
-                                <li>
-                                    <span class="w4">期望时间</span>
-                                    <span>：</span>
-                                    <p><span style="letter-spacing:0;">2017/10/3-2017/10/7</span><span>(共4天)</span></p>
-                                </li>
-                                <li><span class="w4">场地预算</span>
-                                    <span>：</span>
-                                    <p>3~5万</p>
-                                </li>
-                                    
-                                <li class="space-require"><span class="w4">场地需求</span>
-                                    <span>：</span>
-                                    <p>最好的额我思考对方开始减肥方法你福利俄文饭</p>
-                                </li>
-                                    
-                                <li class="find-position"><span class="w4">询价位置</span>
-                                    <span>：</span>
-                                    <p>
-                                        <span>室内一层</span>
-                                        <span>室外南广场</span>
-                                    </p>
-                                </li>
-                                <li><span class="w4">活动方案</span>
-                                    <span>：</span>
-                                    <p>
-                                        <img src="../../../static/images/bc.png" alt="">
-                                    </p>
-                                </li>
-                            </ul>
-                       </div>
-                       <span class="hold-number">已有56人抢单</span>
-                   </div>
-                   <!-- 单个活动的下部分 --> 
-                   <div class="singleABottom">
-                       <ul>
-                           <li><p>立即抢单</p></li>
-                          <li @click="Collect">
-                                <span class="icon-shoucang"></span>
-                           </li>
-                           <li>
-                               <span class="icon-fenxiang2"></span>
-                           </li>
-                       </ul>
-                   </div>
-                </li>
-                 <li>
-                    <!-- 单个活动的上部 -->
-                   <div class="singleATop clearfix">
-                       <div class="singleATop-left">
-                          <img src="../../../static/images/girl.jpg" alt="">
-                       </div>
-                       <div class="singleATop-right ">
-                           <p class="activity-title">
-                               <span class="activity-name">河马先生</span>
-                                <span><span v-show="true">[@了我]</span></span>
-                                <span class="publish-time">6/25</span>
-                            </p>
-                            <ul>
-                                <li>
-                                    <span class="w4">期望时间</span>
-                                    <span>：</span>
-                                    <p><span style="letter-spacing:0;">2017/10/3-2017/10/7</span><span>(共4天)</span></p>
-                                </li>
-                                <li><span class="w4">场地预算</span>
-                                    <span>：</span>
-                                    <p>3~5万</p>
-                                </li>
-                                    
-                                <li class="space-require"><span class="w4">场地需求</span>
-                                    <span>：</span>
-                                    <p>最好的额我思考对方开始减肥方法你福利俄文饭</p>
-                                </li>
-                                    
-                                <li class="find-position"><span class="w4">询价位置</span>
-                                    <span>：</span>
-                                    <p>
-                                        <span>室内一层</span>
-                                        <span>室外南广场</span>
-                                    </p>
-                                </li>
-                                <li><span class="w4">活动方案</span>
-                                    <span>：</span>
-                                    <p>
-                                        <img src="../../../static/images/bc.png" alt="">
-                                    </p>
-                                </li>
-                            </ul>
-                       </div>
-                       <span class="hold-number">已有56人抢单</span>
-                   </div>
-                   <!-- 单个活动的下部分 --> 
-                   <div class="singleABottom">
-                       <ul>
-                           <li><p>立即抢单</p></li>
-                           <li @click="Collect">
-                                <span class="icon-shoucang"></span>
+                           <li @click="Collect(index)">
+                                <span :class="{'icon-shoucang':true,shoucang:item.isShou}"></span>
                            </li>
                            <li>
                                <span class="icon-fenxiang2"></span>
@@ -205,24 +89,32 @@
     </div>
 </template>
 <script>
+import baseInfo from '../../common/js/base.js'
 export default {
   data() {
     return {
       activeTab: "tab1",
-      isLinkMe:false,
-      isShou:false,
+    //   isShou:false,
       rightBottom: {horizontal: 'right', vertical: 'bottom'},
-      rightTop: {horizontal: 'right', vertical: 'top'}
+      rightTop: {horizontal: 'right', vertical: 'top'},
+      activityInfo:baseInfo.activityInfo,// 获取的数据列表
     };
   },
   methods: {
     handleTabChange(val) {
       this.activeTab = val;
     },
-    Collect:function(){
-        this.isShou=!this.isShou
+    Collect:function(index){
+        console.log(index)
+        this.activityInfo[index].isShou=!this.activityInfo[index].isShou
+    //    setTimeout(function(){
+    //         this.activityInfo[index].isShou=!this.activityInfo[index].isShou
+    //    },1000)
+        console.log(this.activityInfo)
+        // this.activityInfo.$set(index,{isShou:!this.activityInfo[index].isShou})
     }
-  }
+  },
+
 };
 </script>
 <style scoped>
@@ -320,6 +212,7 @@ export default {
 }
 .activity-title span:nth-child(2) span{
     width:1.66rem;
+    display:inline-block;
     color:#e51c23;
     line-height: 0.15rem;
      font-size: 0.12rem;

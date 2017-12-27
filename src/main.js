@@ -11,7 +11,6 @@ Vue.config.productionTip = false
 Vue.use(MuseUi)
 Vue.use(VueRouter)
 Vue.use(Style) //公用样式
-Vue.use(axios)
 // 登陆
 import Login from './components/login/login'
 // 用户
@@ -30,7 +29,7 @@ import Session from './components/Session/Session'
 // 定义路由
 const routes = [
   // 登录的路由
-  {path: '/', redirect: '/login'},
+  // {path: '', redirect: '/login'},
   {path: '/login', component: Login},
 
   // 用户界面
@@ -49,6 +48,7 @@ const routes = [
 //  创建 router 实例，然后传 `routes` 配置
 // 你还可以传别的配置参数, 不过先这么简单着吧。
 const router = new VueRouter({
+  history:true,
   routes 
 })
 
