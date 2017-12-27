@@ -29,7 +29,7 @@
   .mu-tab-link-highlight{
     display: inline-block;
     background-color: #fff;
-    background-image: -webkit-linear-gradient( left,
+    background-image: -webkit-linear-gradient( to right,
        #fff  0%,
         #fff  40%,
         #ff8a65  40%,
@@ -37,7 +37,7 @@
         #fff  60%,
         #fff 100%
     );
-     background-image: linear-gradient( left,
+     background-image: linear-gradient( to right,
        #fff  0%,
         #fff  40%,
         #ff8a65  40%,
@@ -45,7 +45,7 @@
         #fff  60%,
         #fff 100%
     );
-     background-image: -o-linear-gradient( left,
+     background-image: -o-linear-gradient( to right,
        #fff  0%,
         #fff  40%,
         #ff8a65  40%,
@@ -53,7 +53,7 @@
         #fff  60%,
         #fff 100%
     );
-     background-image: -moz-linear-gradient( left,
+     background-image: -moz-linear-gradient( to right,
        #fff  0%,
         #fff  40%,
         #ff8a65  40%,

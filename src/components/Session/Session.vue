@@ -11,7 +11,7 @@
             <!-- 聊天对话 -->
             <div class="dialogue">
                 <ul>
-                    <li class="wetalk clearfix">
+                     <!-- <li class="wetalk clearfix">
                         <img src="../../../static/images/girl.jpg" alt="">
                         <p class="talkCons">您好，请问，在们纷纷模仿干嘛 钢化膜湖南怀化按某月某日</p>
                     </li>
@@ -22,19 +22,49 @@
                     <li class="wetalk clearfix">
                         <img src="../../../static/images/girl.jpg" alt="">
                         <p class="talkCons">您好</p>
+                    </li> -->
+                  <!--  <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li>
+                    <li class="wetalk clearfix">
+                        <img src="../../../static/images/girl.jpg" alt="">
+                        <p class="talkCons">您好</p>
+                    </li> -->
+                    <li v-for="item in sessionList" :class="{clearfix:true,wetalk:item.name}">
+                        <img :src="item.src" alt="">
+                        <p class="talkCons">{{item.content}}</p>
                     </li>
                 </ul>
             </div>  
         </div>
 
-            <!-- input框 -->
-            <div class="positionInput" v-show="showInput">
-               <div>
-                    <input type="text" id="textInput" v-model="customerText" >
-               </div>
-            </div>
         <!-- 底部输入部分 -->
-        <div :class="{keyBoard:true,clearfix:true,showPosition:showPosition}" v-show="showKeyBoard">
+        <div :class="{keyBoard:true,clearfix:true,}" v-show="showKeyBoard">
             <div class="f_left keyWords" @click="changeBox">
                 <span class="icon-message f_left"></span>
                 <span>切换<br/>聊天</span>
@@ -90,9 +120,8 @@
             <!-- 输入框 -->
         
             <div class="inputBox" v-show="showInputBox">
-                <div  @click="changeText" id="btn">
-                    <div class="reInput">{{customerText}}</div>
-                    <!-- <input type="text"> -->
+                <div  id="btn">
+                    <input type="text" class="reInput">
                 </div>
                 <span class="sendOver f_right">发送</span>
             </div>
@@ -102,6 +131,11 @@
     </div>
 </template>
 <script>
+
+import sessionInfo from '../../common/js/base.js'
+
+const sessionList=sessionInfo.sessionInfo
+
 export default{
     data:function(){
         return {
@@ -111,18 +145,16 @@ export default{
             quickPay:false,
             game1:1, // 默认的选则
             list: ['室内中层一厅', '室外南广场'],// 场地数据
-            showInputBox:false,
             showAblityKey:true,
             showInput:false,
             showKeyBoard:true,
             showInputBox:false,
-            showPosition:false,
-            customerText:'',
+            sessionList,
         }
     },
     methods: {
         goBack:function(){
-            this.$router.back(-1)
+            this.$router.push('/user/talking')
         },
         // 显示隐藏对话框
         toggleOneKey:function(){
@@ -141,29 +173,22 @@ export default{
             //  this.timeTab=false
         },
         changeBox:function(){// 切换键盘盒子
+        console.log(this.sessionList)
         if(this.showAblityKey){
             this.showAblityKey=false;
             this.showInputBox=true;
         }else{
             this.showAblityKey=true;
             this.showInputBox=false;
-            this.showPosition=false;// 把input框滑下来
-            document.getElementById("textInput").blur() //失去焦点
+     
         }
         },
-        changeText:function(){
-             document.getElementById("textInput").focus() //获取焦点
-            const u = navigator.userAgent;
-            const isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
-            const isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
-            if(isiOS){
-                this.showPosition=true;
-                document.getElementById("btn").click()
-            }
-            this.showInput=true;
-        }
+
                
     },
+    watch:{
+        
+    }
 }
 </script>
 <style scoped>
@@ -187,8 +212,12 @@ export default{
 }
 /* 聊天室主要内容 */
 .talkRoom{
- overflow: hidden;
- padding-top:46px;
+    width:100%;
+ overflow: auto;
+ position: absolute;
+ top:52px;
+ bottom:0.5rem;
+ left:0px;
 }
 .brief{
     width:100%;
@@ -206,13 +235,15 @@ export default{
     width:0.46rem;
     height: 0.46rem;
 }
-.wetalk img{
-    float: left;
-    margin-right: 15px;
-}
-.anotherTalk img{
+
+.dialogue li img{
     float:right;
      margin-left: 15px;
+}
+.dialogue .wetalk img{
+    float: left;
+    margin-right: 15px;
+    margin-left: 0px;
 }
 .dialogue li p{
     border:1px solid #eaeaea;
@@ -248,35 +279,20 @@ export default{
     padding-left:0.58rem;
     position: relative;
 }
-.inputBox>div,.positionInput>div{
+.inputBox>div{
     width:2.8rem;
     height:100%;
     padding:7px 10px;
 }
-.positionInput>div input,.inputBox>div input{
-    width:100%;
-     height:100%;
-     border:1px solid #eaeaea;
-     padding-left:10px;
-}
+
  .inputBox .reInput{
      width:100%;
      height:100%;
      border:1px solid #eaeaea;
      padding:5px 2px;
  }
- .positionInput{
-     width:100%;
-     height:0.5rem;
-     position: fixed;
-     top:-80px;
-     left: 0;
- }
- .showPosition{
-      position: absolute;
-    bottom:2.5rem;
-    left: 0px;
- }
+
+
 /* 切换聊天 */
 .keyWords{
     width: 16%;

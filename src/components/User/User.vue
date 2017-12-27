@@ -41,7 +41,7 @@ export default{
   .vue-footer{
       width:100%;
       height: 48px;
-      position: absolute;
+      position: fixed;
       bottom: 0px;
       left: 0;
       z-index:55;

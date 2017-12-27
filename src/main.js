@@ -6,10 +6,12 @@ import MuseStyle from 'muse-ui/dist/muse-ui.css' // 引进muse-ui的css
 import App from './App' // App.vue 文件
 import VueRouter from 'vue-router'// 引进路由
 import Style from './common/css/style.css'
+import axios from 'axios'
 Vue.config.productionTip = false
 Vue.use(MuseUi)
 Vue.use(VueRouter)
-Vue.use(Style)
+Vue.use(Style) //公用样式
+Vue.use(axios)
 // 登陆
 import Login from './components/login/login'
 // 用户
