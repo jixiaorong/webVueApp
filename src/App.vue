@@ -1,23 +1,18 @@
 <template>
   <div id="app">
-       <router-view></router-view>
-  
+       <router-view></router-view> 
   </div>
 </template>
 <script>
-import Login from './components/login/login'
-import User from './components/User/User'
-import Vue from 'vue'
-import VueRouter from 'vue-router'// 引进路由
-import commonJs from './common/js/common.js'
-Vue.use(VueRouter)
+
+import commonJs from './common/js/common.js'// 引入工具箱
 
    export default{
      created () {
-         console.log(commonJs.getLocal("key"))
-         if(!commonJs.getLocal("key")){
-            console.log(commonJs.getLocal("key"))
+         if(!commonJs.getLocal("token")){// 如果本地没有token就进入登录页
            this.$router.push('/login')
+         }else{ // 否则进入用户页面
+           this.$router.push('/user')
          }
        },
      data(){

@@ -29,7 +29,6 @@ import Session from './components/Session/Session'
 // 定义路由
 const routes = [
   // 登录的路由
-  // {path: '', redirect: '/login'},
   {path: '/login', component: Login},
 
   // 用户界面

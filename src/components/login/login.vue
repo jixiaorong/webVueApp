@@ -83,11 +83,11 @@ const tryUrl=baseUrl.tryUrl //手机号密码登录的地址
                 password:password
                 })
                 .then(res=>{
-                    
-                    console.log(res)
                     if(res.status==200&&res.data.err_msg=="success"){
-                        setLocal(token,res.dara.access_token)
-                            // this.$router.push('user/')
+                        console.log(res.data.access_token)
+                        const token=res.data.access_token
+                        commonJs.setLocal("token",token)
+                            this.$router.push('user/')
                     }
         
                 })
