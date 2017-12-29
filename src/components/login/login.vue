@@ -36,8 +36,9 @@
   },false);
 
 import baseUrl from '../../common/js/url.js'// url地址
-import commonJs from '../../common/js/common.js' // 工具箱
+import commonJs from '../../common/js/login.js' // 工具箱
 import axios from 'axios' // 导入axios
+
 const tryUrl=baseUrl.tryUrl //手机号密码登录的地址
 
  export default{
@@ -84,9 +85,8 @@ const tryUrl=baseUrl.tryUrl //手机号密码登录的地址
                 })
                 .then(res=>{
                     if(res.status==200&&res.data.err_msg=="success"){
-                        console.log(res.data.access_token)
                         const token=res.data.access_token
-                        commonJs.setLocal("token",token)
+                        commonJs.setLocal(token)
                             this.$router.push('user/')
                     }
         

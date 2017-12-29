@@ -23,7 +23,7 @@ export default{
 
     data:function(){
         return {
-      bottomNav: 'activity'
+         bottomNav: 'activity'
       }
     },
     methods: {

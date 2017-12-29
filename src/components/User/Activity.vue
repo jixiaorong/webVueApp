@@ -107,11 +107,7 @@ export default {
     Collect:function(index){
         console.log(index)
         this.activityInfo[index].isShou=!this.activityInfo[index].isShou
-    //    setTimeout(function(){
-    //         this.activityInfo[index].isShou=!this.activityInfo[index].isShou
-    //    },1000)
         console.log(this.activityInfo)
-        // this.activityInfo.$set(index,{isShou:!this.activityInfo[index].isShou})
     }
   },
 
@@ -150,6 +146,8 @@ export default {
 .myMuTabs{
     background-color: #fff;
     text-align: center;
+    position: fixed;
+    z-index: 55;
 }
 .mu-tab-link{
     color:#333;
@@ -174,6 +172,7 @@ export default {
 }
 .timeTab{
     padding:0.05rem;
+    margin-top:50px;
 }
 
 /* 中间内容区域 */

@@ -7,6 +7,7 @@ import App from './App' // App.vue 文件
 import VueRouter from 'vue-router'// 引进路由
 import Style from './common/css/style.css'
 import axios from 'axios'
+import Qs from 'qs'
 Vue.config.productionTip = false
 Vue.use(MuseUi)
 Vue.use(VueRouter)
@@ -18,7 +19,7 @@ import User from './components/User/User'
 import Talking from './components/User/Talking'
 import Activity from './components/User/Activity'
 import Siting from './components/User/Siting'
-import Me from './components/User/Me'
+import Me from './components/User/Me.vue'
 // 会话
 import Session from './components/Session/Session'
 

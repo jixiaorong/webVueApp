@@ -27,4 +27,9 @@ export default{
     {name:"蓝月亮",src:"/static/images/girl.jpg",isCallMe:true,infoTime:"6/25",expectTime:"2017/10/3-2017/10/7",allTime:"4天",budget:"3~5万",siteNeed:" 能力的蓝枫 在的啦 啦  考虑ask我惊愕进或者在是符合符合发证",
     activityPosition:["室内一层","室外南广场"],isShou:true,currentPerson:"56"},
     ],
+    personMessage:[
+        {val:"收藏",icons:"icon-shoucangfill"},
+        {val:"签约",icons:"icon-shoucangfill"},
+        {val:"设置",icons:"icon-shoucangfill"},
+    ]
 }
