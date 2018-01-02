@@ -3,7 +3,7 @@
 
 import urlJs from './url.js'//请求地址的js
 import axios from 'axios'
-
+import VueRouter from 'vue-router'
 export default{
 
     setLocal:function(obj){ // 设置token到本地local
@@ -30,7 +30,8 @@ export default{
         .then(res=>{
             console.log(res)
             if(res.status==200 && res.data.err_code==0){
-                console.log(1)
+            //    this.$router.push('/user')
+               console.log(1)
             }
         })
        .catch(err=>{

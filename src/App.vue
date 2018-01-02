@@ -21,7 +21,7 @@ const tryUrl=urlJs.tryUrl
         //  }else{ // 否则进入用户页面
         //    this.$router.push('/user')
         //  }
-        this.isLoading=false;// 结束loading
+        // this.isLoading=false;// 结束loading
         // commonJs.isToken()
    
        },
@@ -48,5 +48,8 @@ const tryUrl=urlJs.tryUrl
       height:500px;
       padding-top:225px;
       text-align: center;
+    }
+    .mu-circle-spinner{
+      border-color:#ff8a65;
     }
 </style>
